@@ -87,6 +87,7 @@
         </div>
     </div>
 </section>
+<section></section>
 
 <!-- cart section end -->
 <?php include 'layout/footer.php'; ?>
