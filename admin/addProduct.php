@@ -22,14 +22,15 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $category = $_POST['category'];
             $brand = $_POST['brand'];
             $price = $_POST['price'];
-            $descreption = $_POST['descreption']
-            $query = "INSERT INTO product(productname,category,brand,price,image,descreption) values('$productname','$category','$brand','$price','$imagename','$descreption')";
+            $description = $_POST['description'];
+            $query = "INSERT INTO products(productName,category,brand,price,images,description) VALUES('$productname','$category','$brand','$price','$imagename','$description')";
             $result = mysqli_query($con,$query);
             if($result){
                 echo "<script>
                     alert('Your product add successfully');
                     window.location.href='product.php';
                 </script>";
+                // print_r('$result');
             }else{
                 echo "Something went wrong".mysqli_error($con);
             }
@@ -43,16 +44,17 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         <div class="row">
             <div class="col-lg-8">
                 <h3 class="text-center">Addproduct</h3>
-                <form action="" mathod="post" enctype="multipart/form-data">
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="product1" class="form-label fw-bold">PoroductName:</label>
                         <input type="text" id="product1" class="form-control" name="productname"
                             placeholder="Enter your product name">
+                            <small><?php echo $productnameerr; ?></small>
                     </div>
                     <div class="mb-3">
                         <label for="product2" class="form-label  fw-bold">Product Image:</label>
-                        <input type="file" id="product2" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
+                        <input type="file" id="product2" name="image" class="form-control">
+                        <small><?php echo $imageerr; ?></small>
                     </div>
                     <div class="mb-3">
                         <label for="category" class="form-label  fw-bold">Category:</label>
@@ -62,6 +64,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                             <option value="Fiber">Fiber</option>
                             <option value="Plastic">Plastic</option>
                         </select>
+                        <small><?php echo $categoryerr; ?></small>
                     </div>
                     <div class="mb-3">
                         <label for="product3" class="form-label  fw-bold">Brand:</label>
@@ -71,11 +74,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                             <option value="Fiber">Fiber</option>
                             <option value="Plastic">Plastic</option>
                         </select>
+                        <small><?php echo $branderr; ?></small>
                     </div>
                     <div class="mb-3">
                         <label for="product4" class="form-label  fw-bold">TotalPrice:</label>
                         <input type="text" id="product4" class="form-control" name="price"
                             placeholder="Enter your productprice name">
+                        <small><?php echo $priceerr; ?></small>
                     </div>
                     <div class="mb-3">
                         <label for="product5" class="form-label  fw-bold">Description:</label>

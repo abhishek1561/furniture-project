@@ -1,7 +1,32 @@
 <?php include 'layout/header.php'; ?>
+<?php include 'dbconnect/config.php'; ?>
 <!-- ========================================================1================================================================ -->
 <!-- ----------------------------Hero Section Start------------------------------ -->
+<?php
+$fnameerr=$emailerr=$messerr='';
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    if(empty($_POST['firstname'])||$_POST['firstname']==''){
+        $fnameerr="Please your Fisrt Name";
+    }else if(empty($_POST['email'])||$_POST['email']==''){
+        $emailerr="Please your Email";
+    }else if(empty($_POST['message'])||$_POST['message']==''){
+        $messerr="Please your Messege";
+    }else{
+        $fname=$_POST['firstname'];
+        $lname=$_POST['lastname'];
+        $email=$_POST['email'];
+        $message=$_POST['message'];
+        $query="INSERT INTO contact(FirstName,LastName,Email,Message) VALUES('$fname','$lname','$email','$message')";
+        if(mysqli_query($con,$query)){
+            echo "<script>
+                alert('Your Message Successfully.you get response through email.');
+                form.reset();
+            </script>;";
+        }
+    }
+}
 
+?>
 <section class="hero">
     <div class="container">
         <div class="row">
