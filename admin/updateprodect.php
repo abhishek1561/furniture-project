@@ -71,62 +71,62 @@ if(isset($_GET['id'])){
                         <input type="file" value="<?= $row['images']?>" name="image" class="form-control" />
                         <input type="hidden" value="<?= $row['images'];?>" name="oldimage" />
                         <img src="productimage/<?= $row['images'];?>" height="50px" width="80px" alt="">
-
-                        <div class="mb-3">
-                            <label for="cate1" class="form-label  fw-bold">Category:</label>
-                            <select name="category" id="cate1">
-                                <option>--select--</option>
-                                <?php
+                    </div>
+                    <div class="mb-3">
+                        <label for="cate1" class="form-label  fw-bold">Category:</label>
+                        <select name="category" id="cate1">
+                            <option>--select--</option>
+                            <?php
                                 $cate="SELECT * FROM category";
                                 $res=mysqli_query($con,$cate);
                                 if(mysqli_num_rows($res)>0){
                                     while($category=mysqli_fetch_assoc($res)){
                                         ?>
-                                <option <?php echo $row['category']==$category['categoryName']?'selected':'' ?>
-                                    value="<?= $category['categoryName']?>"><?= $category['categoryName']?></option>
+                            <option <?php echo $row['category']==$category['categoryName']?'selected':'' ?>
+                                value="<?= $category['categoryName']?>"><?= $category['categoryName']?></option>
 
-                                <?php
+                            <?php
 
                                     }
                                 }
                             ?>
-                            </select>
-                            <small style="color:red"> <?= $caterr?></small>
-                        </div>
-                        <div class="mb-3">
-                            <label for="brand" class="form-label  fw-bold">Brand:</label>
-                            <select name="brand" id="brand">
-                                <option>--select--</option>
-                                <?php
+                        </select>
+                        <small style="color:red"> <?= $caterr?></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="brand" class="form-label  fw-bold">Brand:</label>
+                        <select name="brand" id="brand">
+                            <option>--select--</option>
+                            <?php
                                 $brand="SELECT * FROM brand";
                                 $res=mysqli_query($con,$brand);
                                 if(mysqli_num_rows($res)>0){
                                     while($brand=mysqli_fetch_assoc($res)){
                                         ?>
-                                <option <?php echo $row['brand']==$brand['brandName']?'selected':'' ?>
-                                    value="<?= $brand['brandName']?>"><?= $brand['brandName']?></option>
+                            <option <?php echo $row['brand']==$brand['brandName']?'selected':'' ?>
+                                value="<?= $brand['brandName']?>"><?= $brand['brandName']?></option>
 
-                                <?php
+                            <?php
 
                                     }
                                 }
                             ?>
-                            </select>
-                            <small style="color:red"> <?= $branderr?></small>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label  fw-bold">TotalPrice:</label>
-                            <input type="text" value="<?= $row['price']?>" class="form-control" name="price"
-                                placeholder="Enter your productprice name">
-                            <small style="color:red"> <?= $priceerr ?></small>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label  fw-bold">Description:</label>
-                            <input type="text" value="<?= $row['description']?>" class="form-control" name="description"
-                                placeholder="Enter your description name">
-                            <small style="color:red"> <?= $descriptionerr;?></small>
-                        </div>
-                        <input type="submit" class="btn btn-primary" name="updateproduct" value="Updateproduct">
+                        </select>
+                        <small style="color:red"> <?= $branderr?></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label  fw-bold">TotalPrice:</label>
+                        <input type="text" value="<?= $row['price']?>" class="form-control" name="price"
+                            placeholder="Enter your productprice name">
+                        <small style="color:red"> <?= $priceerr ?></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label  fw-bold">Description:</label>
+                        <input type="text" value="<?= $row['description']?>" class="form-control" name="description"
+                            placeholder="Enter your description name">
+                        <small style="color:red"> <?= $descriptionerr;?></small>
+                    </div>
+                    <input type="submit" class="btn btn-primary" name="updateproduct" value="Updateproduct">
                 </form>
                 <?php
                   }

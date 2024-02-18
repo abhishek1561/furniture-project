@@ -63,7 +63,7 @@
         <a href="order.php">Orders</a>
         <a href="userList.php">Users</a>
         <a href="usercontact.php">Contact</a>
-        <a href="sliderform.php">Slider</a>
+        <a href="slider.php">Slider</a>
     </div>
     <!-- <div id="main-content">
         <h2>Dashboard</h2>

@@ -2,6 +2,7 @@
 
 include 'layout/header.php';
 include '../dbconnect/config.php';
+include 'dashboard.php';
 ?>
 
 <!-- ============================================================================ -->
@@ -9,8 +10,10 @@ include '../dbconnect/config.php';
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-11">
                 <table class="table ">
+                    <h2 class="pt-5" style="text-align:center;">User Table</h2>
                     <button class="btn btn-primary  m-2"><a href="../signUp.php"style="color:#fff;text-decoration:none;">Add Users</a></button>
                     <thead class="table-heading">
                         <tr>
