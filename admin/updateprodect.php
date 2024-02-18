@@ -22,7 +22,7 @@ if(isset($_POST['updateproduct'])){
         $branderr="*Please Enter your brand";
     }else if((empty($_POST['price']) || $_POST['price']=='')){
         $priceerr="*Please Enter your price";
-    }else if($_POST['description'] || $_POST['description']){
+    }else if((empty($_POST['description']) || $_POST['description']=='')){
         $descriptionerr="*Your confirm description";
     }else{
         $productname = $_POST['productname'];
@@ -82,8 +82,8 @@ if(isset($_GET['id'])){
                                 if(mysqli_num_rows($res)>0){
                                     while($category=mysqli_fetch_assoc($res)){
                                         ?>
-                                <option <?php echo $row['category']==$category['categoryname']?'selected':'' ?>
-                                    value="<?= $category['categoryname']?>"><?= $category['categoryname']?></option>
+                                <option <?php echo $row['category']==$category['categoryName']?'selected':'' ?>
+                                    value="<?= $category['categoryName']?>"><?= $category['categoryName']?></option>
 
                                 <?php
 
@@ -103,8 +103,8 @@ if(isset($_GET['id'])){
                                 if(mysqli_num_rows($res)>0){
                                     while($brand=mysqli_fetch_assoc($res)){
                                         ?>
-                                <option <?php echo $row['brand']==$brand['brandname']?'selected':'' ?>
-                                    value="<?= $brand['brandname']?>"><?= $brand['brandname']?></option>
+                                <option <?php echo $row['brand']==$brand['brandName']?'selected':'' ?>
+                                    value="<?= $brand['brandName']?>"><?= $brand['brandName']?></option>
 
                                 <?php
 
@@ -124,7 +124,7 @@ if(isset($_GET['id'])){
                             <label for="exampleInputEmail1" class="form-label  fw-bold">Description:</label>
                             <input type="text" value="<?= $row['description']?>" class="form-control" name="description"
                                 placeholder="Enter your description name">
-                            <small style="color:red"> <?= $descriptionerr?></small>
+                            <small style="color:red"> <?= $descriptionerr;?></small>
                         </div>
                         <input type="submit" class="btn btn-primary" name="updateproduct" value="Updateproduct">
                 </form>

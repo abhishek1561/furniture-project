@@ -9,6 +9,7 @@ include 'dashboard.php';
             <div class="col-lg-11">
                 <h3 class="text-center pt-3">Product List</h3>
                 <table class="table" border="1">
+                    <button class="btn btn-primary  m-2"><a href="addProduct.php"style="color:#fff;text-decoration:none;">Add Product</a></button>
                     <thead>
                         <tr>
                             <th scope="col">Product ID</th>

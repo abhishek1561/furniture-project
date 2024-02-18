@@ -11,6 +11,7 @@ include '../dbconnect/config.php';
         <div class="row">
             <div class="col-lg-12">
                 <table class="table ">
+                    <button class="btn btn-primary  m-2"><a href="../signUp.php"style="color:#fff;text-decoration:none;">Add Users</a></button>
                     <thead class="table-heading">
                         <tr>
                             <th>Id</th>

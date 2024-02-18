@@ -14,7 +14,7 @@ if(isset($_POST['updatecategory'])){
         $result=mysqli_query($con,$query);
         if($result){
             echo "<script>
-                alert('Your category addded successfully');
+                alert('Your category update sccessfully');
                 window.location.href='category.php';
             </script>";
         }else{

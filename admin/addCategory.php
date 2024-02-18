@@ -7,7 +7,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $categorynameerr="*Please Enter your Category name";
         }
         else{
-            $productname = $_POST['productname'];
             $categoryname = $_POST['categoryname'];
             $query = "INSERT INTO category(categoryName) VALUES('$categoryname')";
             $result = mysqli_query($con,$query);
