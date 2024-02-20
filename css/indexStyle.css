@@ -60,6 +60,13 @@
 /* ============ */
 
 /* header section end */
+/* ------------------------------------------------------------------- */
+/* slidersection start */
+.slideimg{
+    height: 550px;
+}
+/* slider section end */
+/* ------------------------------------------------------------------- */
 /* hero section start */
 .hero {
     min-height: 500px;

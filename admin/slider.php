@@ -17,6 +17,7 @@ include 'dashboard.php';
                             <th scope="col">Slider Image</th>
                             <th scope="col">Content</th>
                             <th scope="col">Title</th>
+                            <th scope="col">Button</th>
                             <th scope="col">Create Time</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -33,10 +34,11 @@ include 'dashboard.php';
                         <tr>
                             <td scope="row"><?php echo $row['s_id'];?></td>
                             <td><?php echo $row['sliderName'];?></td>
-                            <td><img src="sliderimage/<?php echo $row['image'];?>" alt="" height="50px" width="50px">
+                            <td><img src="productimage/<?php echo $row['image'];?>" alt="" height="50px" width="50px">
                             </td>
                             <td><?php echo $row['content'];?></td>
                             <td><?php echo $row['title'];?></td>
+                            <td><?php echo $row['button'];?></td>
                             <td><?php echo $row['created_at'];?></td>
                             <td>
                                 <div class="btn-group">

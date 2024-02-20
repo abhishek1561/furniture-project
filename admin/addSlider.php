@@ -1,6 +1,6 @@
 <?php include 'layout/header.php';
 include '../dbconnect/config.php';
-$slidernameerr=$contenterr=$titleerr=$imageerr='';
+$slidernameerr=$contenterr=$titleerr=$imageerr=$buttonerr='';
 if($_SERVER['REQUEST_METHOD']=='POST'){
     if(isset($_POST['addslider'])){
         if(empty($_POST['slidername']) || $_POST['slidername']==''){
@@ -9,6 +9,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $contenterr="*Please Enter your Content";
         }else if(empty($_POST['title']) || $_POST['title']==''){
             $titleerr="*Please Enter your title";
+        }else if(empty($_POST['button']) || $_POST['button']==''){
+            $buttonerr="* Please Enter Button";
         }else if((empty($_FILES['image']['name']) || $_FILES['image']['name']=='')){
             $imageerr="*Please Enter your product image";
         }
@@ -19,7 +21,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $slidername = $_POST['slidername'];
             $content = $_POST['content'];
             $title = $_POST['title'];
-            $query = "INSERT INTO slider(sliderName,image,content,title) VALUES('$slidername','$imagename','$content','$title')";
+            $button = $_POST['button'];
+            $query = "INSERT INTO slider(sliderName,image,content,title,button) VALUES('$slidername','$imagename','$content','$title','$button')";
             $result = mysqli_query($con,$query);
             if($result){
                 echo "<script>
@@ -63,6 +66,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                         <label for="title" class="form-label  fw-bold">Title</label>
                         <input type="text" id="title" class="form-control" name="title"
                             placeholder="Enter your title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="button" class="form-label  fw-bold">Button</label>
+                        <input type="text" id="button" class="form-control" name="button"
+                            placeholder="Enter your Button">
                     </div>
                     <input type="submit" class="btn btn-primary" value="Add Slider" name="addslider">
                 </form>

@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $lname=$_POST['lastname'];
         $email=$_POST['email'];
         $message=$_POST['message'];
-        $query="INSERT INTO contact(FirstName,LastName,Email,Message) VALUES('$fname','$lname','$email','$message')";
+        $query="INSERT INTO contact(firstName,lastName,email,message) VALUES('$fname','$lname','$email','$message')";
         if(mysqli_query($con,$query)){
             echo "<script>
                 alert('Your Message Successfully.you get response through email.');
@@ -71,7 +71,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                         <div class="row">
                             <div class="col-lg-2 col-md-2 col-sm-6 contact-icon"><span><i class="fa-solid fa-envelope"></i></span></div>
                             <div class="col-lg-10">
-                                <p class="ps-3"> pinky@gmail.com</p>
+                                <p class="ps-3"> abhishek@gmail.com</p>
                             </div>
                         </div>
                     </div>
@@ -87,15 +87,15 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 <form class="row g-3 mt-4">
                     <div class="col-lg- col-md-6 col-sm-12">
                         <label for="first_name">First name</label>
-                        <input type="text" readonly class="form-control new-field" id="first_name" name="first_name">
+                        <input type="text" class="form-control new-field" id="first_name" name="firstname">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <label for="last_name">Last name</label>
-                        <input type="text" readonly class="form-control new-field" id="last_name" name="last_name">
+                        <input type="text" class="form-control new-field" id="last_name" name="lastname">
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
-                        <label for="inputPassword2">Email</label>
-                        <input type="password" class="form-control new-field" id="inputPassword2" name="email">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control new-field" id="email" name="email">
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <label for="inputPassword2">Message</label>
