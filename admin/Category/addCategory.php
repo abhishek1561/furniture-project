@@ -1,5 +1,5 @@
-<?php include 'layout/header.php';
-include '../dbconnect/config.php';
+<?php include '../layout/header.php';
+include '../../dbconnect/config.php';
 $categorynameerr='';
 if($_SERVER['REQUEST_METHOD']=='POST'){
     if(isset($_POST['addCategory'])){
@@ -43,4 +43,4 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         </div>
     </div>
 </div>
-<?php include 'layout/footer.php' ?>
+<?php include '../layout/footer.php' ?>

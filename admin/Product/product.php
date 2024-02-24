@@ -1,6 +1,6 @@
-<?php include 'layout/header.php';
-include '../dbconnect/config.php';
-include 'dashboard.php';
+<?php include '../layout/header.php';
+include '../../dbconnect/config.php';
+include '../dashboard.php';
  ?>
 <div class="productlist">
     <div class="container">
@@ -16,6 +16,7 @@ include 'dashboard.php';
                             <th scope="col">Product Name</th>
                             <th scope="col">Category</th>
                             <th scope="col">Brand</th>
+                            <th scope="col">Offer</th>
                             <th scope="col">Price</th>
                             <th scope="col">Product Image</th>
                             <th scope="col">Description</th>
@@ -37,8 +38,9 @@ include 'dashboard.php';
                             <td><?php echo $row['productName'];?></td>
                             <td><?php echo $row['category'];?></td>
                             <td><?php echo $row['brand'];?></td>
+                            <td><?php echo $row['offer'];?></td>
                             <td><?php echo $row['price'];?></td>
-                            <td><img src="productimage/<?php echo $row['images'];?>" alt="" height="80px" width="80px">
+                            <td><img src="../productimage/<?php echo $row['images'];?>" alt="" height="80px" width="80px">
                             </td>
                             <td><?php echo $row['description'];?></td>
                             <td><?php echo $row['create_At'];?></td>
@@ -61,4 +63,4 @@ include 'dashboard.php';
         </div>
     </div>
 </div>
-<?php include 'layout/footer.php'?>
+<?php include '../layout/footer.php'?>

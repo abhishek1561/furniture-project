@@ -1,5 +1,5 @@
 <?php
-include '../dbconnect/config.php';
+include '../../dbconnect/config.php';
 if(isset($_GET['id'])){
     $id=$_GET['id'];
     $query="DELETE FROM products WHERE p_id=$id";

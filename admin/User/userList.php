@@ -1,8 +1,8 @@
 <?php
 
-include 'layout/header.php';
-include '../dbconnect/config.php';
-include 'dashboard.php';
+include '../layout/header.php';
+include '../../dbconnect/config.php';
+include '../dashboard.php';
 ?>
 
 <!-- ============================================================================ -->
@@ -65,4 +65,4 @@ include 'dashboard.php';
 </section>
 <!-- code of form html end-->
 <!-- ============================================================================ -->
-<?php include 'layout/footer.php'?>
+<?php include '../layout/footer.php'?>

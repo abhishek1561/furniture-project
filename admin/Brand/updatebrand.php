@@ -1,7 +1,7 @@
 <?php
-include 'layout/header.php';
-include 'dashboard.php';
-include '../dbconnect/config.php';
+include '../layout/header.php';
+include '../dashboard.php';
+include '../../dbconnect/config.php';
 $brandnameerr='';
 if(isset($_POST['updatebrand'])){
     $id=$_POST['b_id'];
@@ -58,5 +58,5 @@ if(isset($_GET['id'])){
     </div>
 </div>
 <?php
-include 'layout/footer.php';
+include '../layout/footer.php';
 ?>

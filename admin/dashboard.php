@@ -56,14 +56,15 @@
         <div id="header">
             <h2>Admin Panel</h2>
         </div>
-        <a href="#">Dashboard</a>
-        <a href="product.php">products</a>
-        <a href="category.php">Category</a>
-        <a href="brand.php">Brand</a>
-        <a href="order.php">Orders</a>
-        <a href="userList.php">Users</a>
-        <a href="userContact.php">Contact</a>
-        <a href="slider.php">Slider</a>
+        <a href="dashboard.php">Dashboard</a>
+        <a href="..\Product/product.php">products</a>
+        <a href="..\Category/category.php">Category</a>
+        <a href="..\Brand/brand.php">Brand</a>
+        <a href="..\Order/order.php">Orders</a>
+        <a href="..\User/userList.php">Users</a>
+        <a href="..\offer/offer.php">Offer</a>
+        <a href="..\Contact/userContact.php">Contact</a>
+        <a href="..\Slider/slider.php">Slider</a>
     </div>
     <!-- <div id="main-content">
         <h2>Dashboard</h2>

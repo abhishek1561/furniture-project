@@ -1,6 +1,6 @@
 <?php
-include 'layout/header.php';
-include '../dbconnect/config.php';
+include '../layout/header.php';
+include '../../dbconnect/config.php';
 if(isset($_GET['id'])){
     $id=$_GET['id'];
     $query="DELETE FROM category WHERE c_id=$id";

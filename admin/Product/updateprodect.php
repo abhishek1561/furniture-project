@@ -1,8 +1,8 @@
 <?php
-include 'layout/header.php';
-include 'dashboard.php';
-include '../dbconnect/config.php';
-$pnameerr=$caterr=$branderr=$priceerr=$descriptionerr='';
+include '../layout/header.php';
+include '../dashboard.php';
+include '../../dbconnect/config.php';
+$pnameerr=$caterr=$branderr=$offererr=$priceerr=$descriptionerr='';
 if(isset($_POST['updateproduct'])){
     $id=$_POST['p_id'];
     if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -20,6 +20,8 @@ if(isset($_POST['updateproduct'])){
         $caterr="*Please Enter your category";
     }else if(empty($_POST['brand']) || $_POST['brand']==''){
         $branderr="*Please Enter your brand";
+    }else if(empty($_POST['offerNumber']) || $_POST['offerNumber']==''){
+        $branderr="*Please Enter your Offer";
     }else if((empty($_POST['price']) || $_POST['price']=='')){
         $priceerr="*Please Enter your price";
     }else if((empty($_POST['description']) || $_POST['description']=='')){
@@ -28,10 +30,11 @@ if(isset($_POST['updateproduct'])){
         $productname = $_POST['productname'];
         $category = $_POST['category'];
         $brand = $_POST['brand'];
+        $offerNumber=$_POST['offerNumber'];
         $price = $_POST['price'];
         $description = $_POST['description'];
         // $created_at = $_POST['created_at'];
-        $query="UPDATE  products SET productName='$productname',category='$category',brand='$brand',price='$price',description='$description',images='$imagename' where p_id=$id";
+        $query="UPDATE  products SET productName='$productname',category='$category',brand='$brand',offerNumber='$offerNumber',price='$price',description='$description',images='$imagename' where p_id=$id";
         $result=mysqli_query($con,$query);
         if($result){
             echo "<script>
@@ -115,6 +118,27 @@ if(isset($_GET['id'])){
                         <small style="color:red"> <?= $branderr?></small>
                     </div>
                     <div class="mb-3">
+                        <label for="offer" class="form-label  fw-bold">Offer : </label>
+                        <select name="offer" id="offer">
+                            <option>--select--</option>
+                            <?php
+                                $brand="SELECT * FROM offer";
+                                $res=mysqli_query($con,$brand);
+                                if(mysqli_num_rows($res)>0){
+                                    while($offer=mysqli_fetch_assoc($res)){
+                                        ?>
+                            <option <?php echo $row['offerNumber']==$offer['offerNumber']?'selected':'' ?>
+                                value="<?= $offer['offerNumber']?>"><?= $offer['offerNumber']?></option>
+
+                            <?php
+
+                                    }
+                                }
+                            ?>
+                        </select>
+                        <small style="color:red"> <?= $offererr?></small>
+                    </div>
+                    <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label  fw-bold">TotalPrice:</label>
                         <input type="text" value="<?= $row['price']?>" class="form-control" name="price"
                             placeholder="Enter your productprice name">
@@ -137,5 +161,5 @@ if(isset($_GET['id'])){
     </div>
 </div>
 <?php
-include 'layout/footer.php';
+include '../layout/footer.php';
 ?>

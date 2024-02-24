@@ -1,7 +1,7 @@
 <?php
-include 'layout/header.php';
-include 'dashboard.php';
-include '../dbconnect/config.php';
+include '../layout/header.php';
+include '../dashboard.php';
+include '../../dbconnect/config.php';
 $slidernameerr=$imageerr=$contenterr=$titleerr=$buttonerr=$descriptionerr='';
 if(isset($_POST['updateslider'])){
     $id=$_POST['s_id'];
@@ -9,7 +9,7 @@ if(isset($_POST['updateslider'])){
         if($_FILES['image']['name'] != ''){
             $imagename=$_FILES['image']['name'];
             $tmpname=$_FILES['image']['tmp_name'];
-            move_uploaded_file($tmpname,'productimage/'.$imagename);
+            move_uploaded_file($tmpname,'../productimage/'.$imagename);
         }else{
             $imagename=$_POST['oldimage'];
         }
@@ -105,5 +105,5 @@ if(isset($_GET['id'])){
     </div>
 </div>
 <?php
-include 'layout/footer.php';
+include '../layout/footer.php';
 ?>

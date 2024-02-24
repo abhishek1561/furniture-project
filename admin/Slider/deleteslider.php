@@ -1,17 +1,18 @@
 <?php
-include '../dbconnect/config.php';
+include '../../dbconnect/config.php';
 if(isset($_GET['id'])){
     $id=$_GET['id'];
-    $query="DELETE FROM users WHERE id=$id";
+    $query="DELETE FROM slider WHERE s_id=$id";
     $result=mysqli_query($con,$query);
     if($result){
         echo "<script>
-            alert('Your data deleted');
-            window.location.href='userList.php';
+            alert('slider deleted Successfully');
+            window.location.href='slider.php';
         </script>";
     }else{
         echo "Something went wrong".mysqli_error($con);
     }
 }else{
-    header('Location:userList.php');
+    header('Location:slider.php');
 }
+?>

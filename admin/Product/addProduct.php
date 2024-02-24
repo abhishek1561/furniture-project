@@ -1,6 +1,6 @@
-<?php include 'layout/header.php';
-include '../dbconnect/config.php';
-$productnameerr=$categoryerr=$branderr=$priceerr=$imageerr='';
+<?php include '../layout/header.php';
+include '../../dbconnect/config.php';
+$productnameerr=$categoryerr=$branderr=$offererr=$priceerr=$imageerr='';
 if($_SERVER['REQUEST_METHOD']=='POST'){
     if(isset($_POST['addproduct'])){
         if(empty($_POST['productname']) || $_POST['productname']==''){
@@ -9,6 +9,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             $categoryerr="*Please Enter your category";
         }else if(empty($_POST['brand']) || $_POST['brand']==''){
             $branderr="*Please Enter your brand";
+        }else if(empty($_POST['offerNumber']) || $_POST['offerNumber']==''){
+            $branderr="*Please Enter your Offer";
         }else if(empty($_POST['price']) || $_POST['price']==''){
             $priceerr="*Please Enter your price";
         }else if((empty($_FILES['image']['name']) || $_FILES['image']['name']=='')){
@@ -17,13 +19,14 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         else{
             $imagename = $_FILES['image']['name'];
             $tmpname = $_FILES['image']['tmp_name'];
-            move_uploaded_file( $tmpname,'productimage/'.$imagename);
+            move_uploaded_file( $tmpname,'../productimage/'.$imagename);
             $productname = $_POST['productname'];
             $category = $_POST['category'];
             $brand = $_POST['brand'];
+            $offerNumber = $_POST['offerNumber'];
             $price = $_POST['price'];
             $description = $_POST['description'];
-            $query = "INSERT INTO products(productName,category,brand,price,images,description) VALUES('$productname','$category','$brand','$price','$imagename','$description')";
+            $query = "INSERT INTO products(productName,category,brand,offerNumber,price,images,description) VALUES('$productname','$category','$brand','$offerNumber','$price','$imagename','$description')";
             $result = mysqli_query($con,$query);
             if($result){
                 echo "<script>
@@ -67,14 +70,46 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                         <small><?php echo $categoryerr; ?></small>
                     </div>
                     <div class="mb-3">
-                        <label for="product3" class="form-label  fw-bold">Brand:</label>
-                        <select name="brand" class="form-control" id="product3">
-                            <option value="brand">-Select-</option>
-                            <option value="Sleepwell">Sleepwell</option>
-                            <option value="Fiber">Fiber</option>
-                            <option value="Plastic">Plastic</option>
+                        <label for="brand" class="form-label  fw-bold">Brand:</label>
+                        <select name="brand" id="brand">
+                            <option>--select--</option>
+                            <?php
+                                $brand="SELECT * FROM brand";
+                                $res=mysqli_query($con,$brand);
+                                if(mysqli_num_rows($res)>0){
+                                    while($brand=mysqli_fetch_assoc($res)){
+                                        ?>
+                            <option <?php echo $brand['brandName']==$brand['brandName']?'selected':'' ?>
+                                value="<?= $brand['brandName']?>"><?= $brand['brandName']?></option>
+
+                            <?php
+
+                                    }
+                                }
+                            ?>
                         </select>
-                        <small><?php echo $branderr; ?></small>
+                        <small style="color:red"> <?= $branderr?></small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="offer" class="form-label  fw-bold">Offer : </label>
+                        <select name="offerNumber" id="offer">
+                            <option>--select Offer--</option>
+                            <?php
+                                $offer="SELECT * FROM offers";
+                                $res=mysqli_query($con,$offer);
+                                if(mysqli_num_rows($res)>0){
+                                    while($row=mysqli_fetch_assoc($res)){
+                                        ?>
+                            <option <?php echo $row['offerNumber']==$row['offerNumber']?'selected':'' ?>
+                                value="<?= $row['offerNumber']?>"><?= $row['offerNumber']?></option>
+
+                            <?php
+
+                                    }
+                                }
+                            ?>
+                        </select>
+                        <small style="color:red"> <?= $offererr?></small>
                     </div>
                     <div class="mb-3">
                         <label for="product4" class="form-label  fw-bold">TotalPrice:</label>
@@ -93,4 +128,4 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         </div>
     </div>
 </div>
-<?php include 'layout/footer.php' ?>
+<?php include '../layout/footer.php' ?>

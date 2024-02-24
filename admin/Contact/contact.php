@@ -1,5 +1,5 @@
-<?php include 'layout/header.php';
-include '../dbconnect/config.php';
+<?php include '../layout/header.php';
+include '../../dbconnect/config.php';
  ?>
 <div class="productlist">
     <div class="container">
@@ -47,4 +47,4 @@ include '../dbconnect/config.php';
         </div>
     </div>
 </div>
-<?php include 'layout/footer.php' ?>
+<?php include '../layout/footer.php' ?>

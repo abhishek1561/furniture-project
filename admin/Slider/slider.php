@@ -1,6 +1,6 @@
-<?php include 'layout/header.php';
-include '../dbconnect/config.php';
-include 'dashboard.php';
+<?php include '../layout/header.php';
+include '../../dbconnect/config.php';
+include '../dashboard.php';
  ?>
 <div class="productlist">
     <div class="container">
@@ -34,7 +34,7 @@ include 'dashboard.php';
                         <tr>
                             <td scope="row"><?php echo $row['s_id'];?></td>
                             <td><?php echo $row['sliderName'];?></td>
-                            <td><img src="productimage/<?php echo $row['image'];?>" alt="" height="50px" width="50px">
+                            <td><img src="../productimage/<?php echo $row['image'];?>" alt="" height="50px" width="50px">
                             </td>
                             <td><?php echo $row['content'];?></td>
                             <td><?php echo $row['title'];?></td>
@@ -59,4 +59,4 @@ include 'dashboard.php';
         </div>
     </div>
 </div>
-<?php include 'layout/footer.php'?>
+<?php include '../layout/footer.php'?>

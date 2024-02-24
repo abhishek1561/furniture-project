@@ -1,6 +1,6 @@
 <?php
-include 'layout/header.php';
-include '../dbconnect/config.php';
+include '../layout/header.php';
+include '../../dbconnect/config.php';
 if(isset($_POST['update'])){
     $id=$_POST['id'];
     $firstname=$_POST['first_name'];
@@ -90,4 +90,5 @@ if(isset($_GET['id'])){
 }else{
     header('Location:userlist.php');
 }
+include '../layout/footer.php';
 ?>

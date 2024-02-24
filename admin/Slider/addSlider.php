@@ -1,6 +1,6 @@
 <?php 
-include 'layout/header.php';
-include '../dbconnect/config.php';
+include '../layout/header.php';
+include '../../dbconnect/config.php';
 $slidernameerr=$contenterr=$titleerr=$imageerr=$buttonerr='';
 if($_SERVER['REQUEST_METHOD']=='POST'){
     if(isset($_POST['addslider'])){
@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         else{
             $imagename = $_FILES['image']['name'];
             $tmpname = $_FILES['image']['tmp_name'];
-            move_uploaded_file( $tmpname,'productimage/'.$imagename);
+            move_uploaded_file( $tmpname,'../productimage/'.$imagename);
             $slidername = $_POST['slidername'];
             $content = $_POST['content'];
             $title = $_POST['title'];
@@ -79,4 +79,4 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         </div>
     </div>
 </div>
-<?php include 'layout/footer.php' ?>
+<?php include '../layout/footer.php' ?>

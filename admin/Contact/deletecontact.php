@@ -1,5 +1,5 @@
 <?php
-include '../dbconnect/config.php';
+include '../../dbconnect/config.php';
 if(isset($_GET['id'])){
     $id=$_GET['id'];
     $query="DELETE FROM contact WHERE c_id=$id";
