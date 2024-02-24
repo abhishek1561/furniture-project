@@ -28,14 +28,14 @@ include '../dbconnect/config.php';
                           
                         ?>
                         <tr>
-                            <td scope="row"><?php $row['c-id'];?></td>
+                            <td scope="row"><?php $row['c_id'];?></td>
                             <td><?php $row['firstName'];?></td>
                             <td><?php $row['lastName'];?></td>
                             <td><?php $row['email'];?></td>
                             <td><?php $row['message'];?></td>
                             <td><?php $row['created_at'];?></td>
-                            <td><a href="updateprodect.php?id=<?php $row['p_id'];?>" class="mx-2"><i class="fa-solid fa-pen"></i></a>
-                            <a href="deleteproduct.php?id=<?php $row['p_id'];?>" class="mx-2"><i class="fa-regular fa-trash-can"></i></a></td>
+                            <td><a href="updatecontact.php?id=<?php $row['c_id'];?>" class="mx-2"><i class="fa-solid fa-pen"></i></a>
+                            <a href="deletecontact.php?id=<?php $row['c_id'];?>" class="mx-2"><i class="fa-regular fa-trash-can"></i></a></td>
                         </tr>
                         <?php 
                           }

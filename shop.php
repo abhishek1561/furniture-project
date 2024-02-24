@@ -1,4 +1,6 @@
-<?php include 'layout/header.php'; ?>
+<?php include 'layout/header.php'; 
+include 'dbconnect/config.php';
+?>
 <!-----------breadcrums section start-------------------->
 <section class="breadcrum">
     <div class="container">
@@ -12,46 +14,30 @@
 <section class="shopSec">
         <div class="container">
             <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-12 material-image">
-                    <img src="images/product-1.png" alt="material image" class="img-fluid">
-                    <h3 class="material-title">Nordik chair</h3>
-                    <strong class="material-price">$50.00</strong>
+            <?php
+                $query="SELECT * FROM products";
+                $result=mysqli_query($con,$query);
+                if(mysqli_num_rows($result)>0){
+                    while($row=mysqli_fetch_assoc($result)){
+                        ?>
+            <div class="col-lg-3 col-md-6 col-sm-6 material-image">
+                <div class="material_Image">
+                <img src="admin/productimage/<?= $row['images']?>" alt="material image" class="img-fluid materialImg">
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-12 material-image">
-                    <img src="images/product-1.png" alt="material image" class="img-fluid">
-                    <h3 class="material-title">Nordik chair</h3>
-                    <strong class="material-price">$50.00</strong>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-12 material-image">
-                    <img src="images/product-2.png" alt="material image" class="img-fluid">
-                    <h3 class="material-title">Kruzo Aero chair</h3>
-                    <strong class="material-price">$78.00</strong>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-12 material-image">
-                    <img src="images/product-3.png" alt="material image" class="img-fluid">
-                    <h3 class="material-title">Ergonomic chair</h3>
-                    <strong class="material-price">$43.00</strong>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-12 material-image">
-                    <img src="images/product-2.png" alt="material image" class="img-fluid">
-                    <h3 class="material-title">Nordik chair</h3>
-                    <strong class="material-price">$50.00</strong>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-12 material-image">
-                    <img src="images/product-1.png" alt="material image" class="img-fluid">
-                    <h3 class="material-title">Nordik chair</h3>
-                    <strong class="material-price">$50.00</strong>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-12 material-image">
-                    <img src="images/product-2.png" alt="material image" class="img-fluid">
-                    <h3 class="material-title">Nordik chair</h3>
-                    <strong class="material-price">$50.00</strong>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-12 material-image">
-                    <img src="images/product-3.png" alt="material image" class="img-fluid">
-                    <h3 class="material-title">Nordik chair</h3>
-                    <strong class="material-price">$50.00</strong>
-                </div>
+                <span><?= $row['brand']?></span>
+                <h3 class="material-title"><?= $row['productName']?></h3>
+                <strong class="material-price"><?= 'INR '.number_format($row['price'],2)?></strong>
+                <!-- <small class="d-block text-center"><?= $row['description']?></small> -->
+                <form action="<?php $_SERVER['PHP_SELF'];?>" method="post" class="formAddToCart">
+                    <input type="hidden" value="<?= $row['p_id'];?>" name="productid">
+                    <button class="btn btn-primary btrnAddToCart">Add To Cart</button>
+                </form>
+            </div>
+            <?php
+                    }
+                }
+            ?>
+                
             </div>
         </div>
     </section>

@@ -1,4 +1,5 @@
-<?php include 'layout/header.php';
+<?php 
+include 'layout/header.php';
 include '../dbconnect/config.php';
 $slidernameerr=$contenterr=$titleerr=$imageerr=$buttonerr='';
 if($_SERVER['REQUEST_METHOD']=='POST'){

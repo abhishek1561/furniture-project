@@ -52,8 +52,10 @@
                                             class="fa-solid fa-user fs-4 text-white"></i></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link1" aria-current="page" href="cart.php"><i
-                                            class="fa-solid fa-cart-shopping fs-4 text-white"></i></a>
+                                    <a class="nav-link1" aria-current="page" href="cart.php">
+                                        <?php  session_start(); ?>
+                                    <span id="cartcount"><?= count($_SESSION);?></span>    
+                                    <i class="fa-solid fa-cart-shopping fs-4 text-white"></i></a>
                                 </li>
                             </ul>
                         </div>

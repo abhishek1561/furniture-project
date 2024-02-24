@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             echo "<script>
                 alert('Your Message Successfully.you get response through email.');
                 form.reset();
-            </script>;";
+            </script>";
         }
     }
 }
@@ -84,7 +84,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                         </div>
                     </div>
                 </div>
-                <form class="row g-3 mt-4">
+                <form class="row g-3 mt-4"action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
                     <div class="col-lg- col-md-6 col-sm-12">
                         <label for="first_name">First name</label>
                         <input type="text" class="form-control new-field" id="first_name" name="firstname">

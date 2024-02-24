@@ -234,18 +234,17 @@
 }
 .material-image{
     position: relative;
-    cursor: pointer;
 }
 .material-image::before{
     content:"";
     height:80%;
-    width:90%;
+    width:80%;
     background:rgba(0,0,0,0.1);
     position:absolute;
     border-radius: 20px;
     margin: 0px 20px;
-    top:40%;
-    left:0%;
+    top:25%;
+    left:4%;
     transform:scaleY(0);
     transition:0.5s;
     transform-origin:bottom;
@@ -265,7 +264,23 @@
     text-align: center;
     display: block;
 }
-
+.material_Image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.materialImg{
+    height: 280px;
+    width: 250px;
+}
+.formAddToCart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btrnAddToCart{
+    z-index: 0;
+}
 
 /* materialsection end */
 /* choose section start */

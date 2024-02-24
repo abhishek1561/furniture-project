@@ -1,6 +1,24 @@
 <?php include 'layout/header.php' ;
 include 'dbconnect/config.php';
 $count=0;
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    $id=$_POST['productid'];
+    $productsel="SELECT * FROM products WHERE p_id=$id";
+    $product=mysqli_query($con,$productsel);
+    if(mysqli_num_rows($product)>0){
+        $productarray=mysqli_fetch_assoc($product);
+        // session_start();
+        $_SESSION['product']=[
+                                'productName'=>$productarray['p_id'],
+                                'category'=>$productarray['category'],
+                                'brand'=>$productarray['brand'],
+                                'price'=>$productarray['price'],
+                                'images'=>$productarray['images'],
+                                'description'=>$productarray['description']
+    ];
+       // print_r('$productarray');
+    }
+}
 ?>
 
 <!-- slider Section Start -->
@@ -59,7 +77,7 @@ $count=0;
 <!-- Slider Section End -->
 <!-- ========================================================1================================================================ -->
 <!-- ----------------------------Hero Section Start------------------------------ -->
-
+<!-- 
 <section class="hero">
     <div class="container">
         <div class="row">
@@ -79,7 +97,7 @@ $count=0;
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- ------------------------------------Hero Section End--------------------------------------------- -->
 <!-- ==================================================================2==================================================== -->
@@ -93,21 +111,29 @@ $count=0;
                     imperdiet dolor tempor tristique.</p>
                 <button class="btn rounded-pill btn-dark">Explore</button>
             </div>
+            <?php
+                $query="SELECT * FROM products LIMIT 3";
+                $result=mysqli_query($con,$query);
+                if(mysqli_num_rows($result)>0){
+                    while($row=mysqli_fetch_assoc($result)){
+                        ?>
             <div class="col-lg-3 col-md-6 col-sm-6 material-image">
-                <img src="images/product-1.png" alt="material image" class="img-fluid materialImg">
-                <h3 class="material-title">Nordik chair</h3>
-                <strong class="material-price">$50.00</strong>
+                <div class="material_Image">
+                <img src="admin/productimage/<?= $row['images']?>" alt="material image" class="img-fluid materialImg">
+                </div>
+                <span><?= $row['brand']?></span>
+                <h3 class="material-title"><?= $row['productName']?></h3>
+                <strong class="material-price"><?= 'INR '.number_format($row['price'],2)?></strong>
+                <!-- <small class="d-block text-center"><?= $row['description']?></small> -->
+                <form action="<?php $_SERVER['PHP_SELF'];?>" method="post" class="formAddToCart">
+                    <input type="hidden" value="<?= $row['p_id'];?>" name="productid">
+                    <button class="btn btn-primary btrnAddToCart">Add To Cart</button>
+                </form>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 material-image">
-                <img src="images/product-2.png" alt="material image" class="img-fluid materialImg">
-                <h3 class="material-title">Kruzo Aero chair</h3>
-                <strong class="material-price">$78.00</strong>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 material-image">
-                <img src="images/product-3.png" alt="material image" class="img-fluid materialImg">
-                <h3 class="material-title">Ergonomic chair</h3>
-                <strong class="material-price">$43.00</strong>
-            </div>
+            <?php
+                    }
+                }
+            ?>
         </div>
     </div>
 </section>

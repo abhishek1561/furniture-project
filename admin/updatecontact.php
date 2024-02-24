@@ -19,7 +19,7 @@ if(isset($_POST['updatecontact'])){
         $email = $_POST['email'];
         $message = $_POST['message'];
         // $created_at = $_POST['created_at'];
-        $query="UPDATE  contact SET firstName='$firstname',lastName='$lastname',email='$email',message='$message' WHERE c-id=$id";
+        $query="UPDATE contact SET firstName='$firstname',lastName='$lastname',email='$email',message='$message' WHERE c_id=$id";
         $result=mysqli_query($con,$query);
         if($result){
             echo "<script>
@@ -51,7 +51,7 @@ if(isset($_GET['id'])){
                         <label for="firstname" class="form-label fw-bold">First Name:</label>
                         <input type="text" id="firstname" value="<?= $row['firstName'];?>" class="form-control" name="firstname"
                             placeholder="Enter your product name">
-                        <input type="hidden" value="<?= $row['c_d']?>" name="c_id">
+                        <input type="hidden" value="<?= $row['c_id']?>" name="c_id">
                         <small style="color:red"> <?= $firstnameerr?></small>
                     </div>
                     <div class="mb-3">

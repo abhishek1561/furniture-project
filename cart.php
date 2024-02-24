@@ -1,4 +1,8 @@
-<?php include 'layout/header.php'; ?>
+<?php include 'layout/header.php'; 
+if(!isset($_SESSION['product'])){
+    header('Location:index.php');
+}
+?>
 <!-- cart section strat -->
 <section class="cart">
     <div class="container">
@@ -16,19 +20,26 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                        foreach($_SESSION['product'] as $value){
+                            ?>
                         <tr>
-                            <td class="col-lg-2 col-md-2 col-sm-2"><img src="images/product-1.png" alt="" class="img-fluid" style="height:150px; width:150px"></td>
-                            <td class="col-lg-2 col-md-2 col-sm-2"><b>Product 1</b>
+
+                            <td class="col-lg-2 col-md-2 col-sm-2"><img src="admin/productimage/<?= $value['image']?>" alt="" class="img-fluid" style="height:150px; width:150px"></td>
+                            <td class="col-lg-2 col-md-2 col-sm-2"><b><?= $value['productname']?></b>
                             </td>
-                            <td class="col-lg-2 col-md-2 col-sm-2">$49.00</td>
+                            <td class="col-lg-2 col-md-2 col-sm-2"><?= 'INR '.$value['price']?></td>
                             <td class="col-lg-2 col-md-2 col-sm-2">
                                 <span class="minus">-</span>
                                 <input type="text" value="1"/>
                                 <span class="plus">+</span>
                             </td>
-                            <td class="col-lg-2 col-md-2 col-sm-2">$49.00</td>
+                            <td class="col-lg-2 col-md-2 col-sm-2"><?= 'INR '.$value['price']?></td>
                             <td class="col-lg-2 col-md-2 col-sm-2"><a href="#">X</a></td>
                         </tr>
+                        <?php
+                        }
+                        ?>
                         <tr>
                             <td class="col-lg-2 col-md-2 col-sm-2"><img src="images/product-2.png" alt="" class="img-fluid" style="height:150px; width:150px"></td>
                             <td class="col-lg-2 col-md-2 col-sm-2"><b>Product 2</b></td>
